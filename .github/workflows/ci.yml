@@ -1,0 +1,18 @@
+name: CI Kontrolü
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu çek
+        uses: actions/checkout@v3
+
+      - name: Basit HTML kontrolü
+        run: |
+          echo "index.html kontrol ediliyor..."
+          grep -q "Merhaba DevOps" index.html && echo "Test geçti" || exit 1
+
